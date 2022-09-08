@@ -11,6 +11,7 @@ public class Selenium {
 	System.setProperty("webdriver.chrome.driver",exePath);
 	WebDriver driver = new ChromeDriver();
 	driver.get("https://www.google.com");
+	
 		
 	}
 
