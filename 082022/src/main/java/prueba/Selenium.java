@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Selenium {
 
@@ -21,7 +22,53 @@ public class Selenium {
 	
 	searchBar.sendKeys("dress");
 	searchBtn.click();
+	
+	
+	//metodos de explorador
+	String title = driver.getTitle();
+	System.out.println(title);
+	String urlSearch = driver.getCurrentUrl();
+	System.out.println("la url es" + urlSearch);
+	
+	// metodos de navegacion
+	
+//	driver.navigate().back();
+//	Thread.sleep(3000);
+//	driver.navigate().forward(); // usar boton de navegador
+//	Thread.sleep(3000);
+//	driver.navigate().refresh();
+//	Thread.sleep(3000);
+
+	
+	// verificiar elemento desplegado en la pagina
+	boolean prodContainer =  driver.findElement(By.className("product-container")).isDisplayed();
+	if(prodContainer) {
+		System.out.println("el articulo esta desplegado");
+		
+		}
+	 	
+		
+	// obtener texto webelement
+		String prodName = driver.findElement(By.className("product-container")).getText(); // todo lo que esta abajo del div de la clase
+		
+		boolean prodNameContains= prodName.contains("Printed Summer Dress"); // el navtivo de java compara 2 strings y regresa boleano
+		
+		if(prodContainer) {
+			System.out.println("el nombre de producto es correcto");
 			
+		}else{
+			System.out.println("el nombre de producto es incorrecto");
+		}
+			
+		 // dropdown element
+		Select sortDrpDwn   = new Select(driver.findElement(By.id("selectProductSort")));
+		
+//		sortDrpDwn.SelectByVisibleText("Price: Lowest first");
+//		sortDrpDwn.SelectByIndex(2);
+		
+		}
+	
+	
 	}
 
-}
+
