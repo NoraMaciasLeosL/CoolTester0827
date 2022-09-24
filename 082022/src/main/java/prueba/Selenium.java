@@ -1,5 +1,7 @@
 package prueba;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,7 +55,7 @@ public class Selenium {
 		
 		boolean prodNameContains= prodName.contains("Printed Summer Dress"); // el navtivo de java compara 2 strings y regresa boleano
 		
-		if(prodContainer) {
+		if(prodNameContains) {
 			System.out.println("el nombre de producto es correcto");
 			
 		}else{
@@ -65,10 +67,32 @@ public class Selenium {
 		
 //		sortDrpDwn.SelectByVisibleText("Price: Lowest first");
 //		sortDrpDwn.SelectByIndex(2);
+	
+		
+		
+		// findelements
+		List<WebElement> prodList =  driver.findElements(By.className("product-container"));
+		System.out.println("numero de elementos en productos"+ prodList.size());
+		
+		String tercerProd = prodList.get(2).getText();
+		System.out.println(tercerProd);
+		
+		for (int i=0; i < prodList.size(); i++) {
+			System.out.println("Los product son"+ prodList.get(i).getText());
+				System.out.println();
+			if (!prodList.get(i).getText().contains("Dress")) {
+				System.out.println("EL producto no es vestido");
+				break;
+			}
+			
+			
+		}
+		
 		
 		}
 	
-	
+
+
 	}
 
 
